@@ -5,7 +5,7 @@ import FinancialImpact from "./steps/FinancialImpact";
 import SecurityCompliance from "./steps/SecurityCompliance";
 import CompetitiveAdvantage from "./steps/CompetitiveAdvantage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft, faArrowRight, faDollar } from "@fortawesome/free-solid-svg-icons";
 import {
   faChartLine,
   faCode,
@@ -14,6 +14,7 @@ import {
   faTrophy,
   faFlagCheckered,
 } from "@fortawesome/free-solid-svg-icons";
+
 
 const steps1 = [
   {
@@ -63,6 +64,7 @@ export default function StepLayout() {
   const [currentStep, setCurrentStep] = useState(0);
   const [selectedImpact, setSelectedImpact] = useState("");
 
+  
   const stepContent = [
     <BusinessValue
       selectedImpact={selectedImpact}
@@ -123,7 +125,9 @@ export default function StepLayout() {
               </div>
               <span
                 className={`text-xs ${
-                  cc
+                  index === currentStep
+                    ? "text-blue-500 font-bold"
+                    : "text-gray-500"
                 }`}
               >
                 {step.label}
@@ -147,36 +151,118 @@ export default function StepLayout() {
             <div className="text-xs">{steps1[currentStep].description}</div>
           </div>
 
-          <div className="max-w-2xl border border-blue-700 rounded-md p-6">
-            {/* 👇 Render dynamic content for each step */}
-            <div className="mb-6 text-gray-700">{stepContent[currentStep]}</div>
-
-            {/* Navigation Buttons */}
-            <div className="flex justify-between">
+          {currentStep < steps2.length - 1 ? (
+             <div className="max-w-2xl border border-blue-700 rounded-md p-6">
+             {/* 👇 Render dynamic content for each step */}
+             <div className="mb-6 text-gray-700">{stepContent[currentStep]}</div>
+ 
+             {/* Navigation Buttons */}
+             <div className="flex justify-between">
+               <button
+                 onClick={prev}
+                 disabled={currentStep === 0}
+                 className="px-2 py-1 text-blue-700 text-xs rounded-sm border border-blue-500 disabled:opacity-50"
+               >
+                 <FontAwesomeIcon
+                   icon={faArrowLeft}
+                   className="text-blue-500 pr-2"
+                 />
+                 Back
+               </button>
+               <button
+                 onClick={next}
+                 disabled={currentStep === steps2.length - 1}
+                 className="px-2 py-1 text-blue-700 text-xs rounded-sm border border-blue-500 disabled:opacity-50"
+               >
+                 Next
+                 <FontAwesomeIcon
+                   icon={faArrowRight}
+                   className="text-blue-500 pl-2"
+                 />
+               </button>
+             </div>
+           </div>
+          ) : (
+            <div className="max-w-2xl border border-blue-700 rounded-md p-8">
+              <div className="w-full grid grid-rows-5 gap-4 mb-10">
+                <div className="flex justify-between items-center bg-white p-2 text-xs rounded-md shadow-2xs">
+                  <div>
+                    <p>Business Value</p>
+                    <p className="text-green-600">High Impact</p>
+                  </div>
+                  <FontAwesomeIcon
+                   icon={faChartLine}
+                   className="text-green-500 pl-2"
+                 />
+                </div>
+                <div className="flex justify-between items-center bg-white p-2 text-xs rounded-md shadow-2xs">
+                <div>
+                    <p>Engineering Effort</p>
+                    <p className="text-orange-600">High Impact</p>
+                  </div>
+                  <FontAwesomeIcon
+                   icon={faCode}
+                   className="text-orange-500 pl-2"
+                 />
+                </div>
+                <div className="flex justify-between items-center bg-white p-2 text-xs rounded-md shadow-2xs">
+                <div>
+                    <p>Financial Impact</p>
+                    <p className="text-blue-600">High Impact</p>
+                  </div>
+                  <FontAwesomeIcon
+                   icon={faDollarSign}
+                   className="text-blue-500 pl-2"
+                 />
+                </div>
+                <div className="flex justify-between items-center bg-white p-2 text-xs rounded-md shadow-2xs">
+                <div>
+                    <p>Security and Compliance</p>
+                    <p className="text-red-600">High Impact</p>
+                  </div>
+                  <FontAwesomeIcon
+                   icon={faShieldAlt}
+                   className="text-red-500 pl-2"
+                 />
+                </div>
+                <div className="flex justify-between items-center bg-white p-2 text-xs rounded-md shadow-2xs">
+                <div>
+                    <p>Competitive Advantage</p>
+                    <p className="text-purple-600">High Impact</p>
+                  </div>
+                  <FontAwesomeIcon
+                   icon={faTrophy}
+                   className="text-purple-500 pl-2"
+                 />
+                </div>
+              </div>
+              {/* Summary content goes here */}
+              <div className="flex flex-col text-sm text-gray-600">
               <button
-                onClick={prev}
-                disabled={currentStep === 0}
-                className="px-2 py-1 text-blue-700 text-xs rounded-sm border border-blue-500 disabled:opacity-50"
-              >
-                <FontAwesomeIcon
-                  icon={faArrowLeft}
-                  className="text-blue-500 pr-2"
-                />
-                Back
-              </button>
-              <button
-                onClick={next}
-                disabled={currentStep === steps2.length - 1}
-                className="px-2 py-1 text-blue-700 text-xs rounded-sm border border-blue-500 disabled:opacity-50"
-              >
-                Next
-                <FontAwesomeIcon
-                  icon={faArrowRight}
-                  className="text-blue-500 pl-2"
-                />
-              </button>
+                 onClick={prev}
+                 disabled={currentStep === 0}
+                 className="px-2 py-1 text-white text-xs bg-blue-600 rounded-sm disabled:opacity-50"
+               >
+                 Submit Assessment
+               </button>
+               <button
+                 onClick={prev}
+                 disabled={currentStep === 0}
+                 className="px-2 py-1 my-2 text-black text-xs rounded-sm border border-blue-600 disabled:opacity-50"
+               >
+                 Edit Previous Steps
+               </button>
+               <button
+                 onClick={prev}
+                 disabled={currentStep === 0}
+                 className="px-2 py-1 text-black text-xs rounded-sm border border-blue-600 disabled:opacity-50"
+               >
+                 Cancel
+               </button>
+              </div>
             </div>
-          </div>
+          )}
+         
         </div>
       </div>
     </div>

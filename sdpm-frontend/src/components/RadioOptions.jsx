@@ -9,16 +9,15 @@ export default function RadioCardGroup({
 }) {
   return (
     <div className="space-y-4">
-      {label && <p className="text-sm text-gray-700">{label}</p>}
+      <p className="text-sm text-gray-700">{label}</p>
       <div className="flex gap-3">
         {options.map((option) => (
           <label
             key={option.id}
-            htmlFor={option.id}
             className={`flex-1 cursor-pointer rounded-lg border p-2 transition-all duration-200 ${
               selectedValue === option.id
                 ? `ring-2 ring-offset-1 ${option.ringColor} ${option.bgColor} ${option.borderColor}`
-                : `${option.ringColor} ${option.bgColor} ${option.borderColor} ${option.borderWidth} hover:border-gray-200`
+                : `${option.ringColor} ${option.bgColor} ${option.borderColor} ${option.borderWidth}`
             }`}
           >
             <div className="flex items-start gap-2">
@@ -29,7 +28,7 @@ export default function RadioCardGroup({
                 value={option.id}
                 checked={selectedValue === option.id}
                 onChange={() => setSelectedValue(option.id)}
-                className="mt-1"
+                
               />
               <div>
                 <div className="text-sm font-medium">
