@@ -1,5 +1,9 @@
 import { useState } from "react";
-import StepAccount from "./steps/BusinessValue";
+import BusinessValue from "./steps/BusinessValue";
+import EngineeringEffort from "./steps/EngineeringEffort";
+import FinancialImpact from "./steps/FinancialImpact";
+import SecurityCompliance from "./steps/SecurityCompliance";
+import CompetitiveAdvantage from "./steps/CompetitiveAdvantage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -11,7 +15,42 @@ import {
   faFlagCheckered,
 } from "@fortawesome/free-solid-svg-icons";
 
-const steps = [
+const steps1 = [
+  {
+    title: "What's the business value?",
+    description: "How big of an impact will this deliverable have?",
+    icon: faChartLine,
+  },
+  {
+    title: "How complex is this deliverable?",
+    description: "Estimate how much engineering time this will take?",
+    icon: faChartLine,
+  },
+  {
+    title: "What's the financial impact of this deliverable?",
+    description: "Estimate how this deliverable will impact revenue and cost",
+    icon: faChartLine,
+  },
+  {
+    title: "How secure and compliant is this deliverable?",
+    description:
+      "Evaluate the level of security and compliance this deliverable requires",
+    icon: faChartLine,
+  },
+  {
+    title: "Will this deliverable give us a competitive advantage?",
+    description:
+      "Evaluate the level of security and compliance this deliverable requires?",
+    icon: faChartLine,
+  },
+  {
+    title: "Summary of your Assessment?",
+    description: "Here's a quick review before submission",
+    icon: faChartLine,
+  },
+];
+
+const steps2 = [
   { label: "Business Value", icon: faChartLine, color: "bg-blue-500" },
   { label: "Engineering Effort", icon: faCode, color: "bg-purple-400" },
   { label: "Financial Impact", icon: faDollarSign, color: "bg-indigo-400" },
@@ -20,39 +59,36 @@ const steps = [
   { label: "Summary", icon: faFlagCheckered, color: "bg-pink-400" },
 ];
 
-const blueField = [
-  "blue field 1",
-  "blue field 2",
-  "blue field 3",
-  "blue field 4",
-  "blue field 5",
-  "blue field 6",
-];
-// Example step contents
-
-const StepProfile = () => <p>This is the Profile step content.</p>;
-const StepReview = () => <p>This is the Review step content.</p>;
-const StepFinish = () => <p>You're all done. Thank you!</p>;
-
 export default function StepLayout() {
   const [currentStep, setCurrentStep] = useState(0);
   const [selectedImpact, setSelectedImpact] = useState("");
 
   const stepContent = [
-    <StepAccount
+    <BusinessValue
       selectedImpact={selectedImpact}
       setSelectedImpact={setSelectedImpact}
     />,
-    <StepProfile />,
-    <StepReview />,
-    <StepProfile />,
-    <StepReview />,
-    <StepFinish />,
+    <EngineeringEffort
+      selectedImpact={selectedImpact}
+      setSelectedImpact={setSelectedImpact}
+    />,
+    <FinancialImpact
+      selectedImpact={selectedImpact}
+      setSelectedImpact={setSelectedImpact}
+    />,
+    <SecurityCompliance
+      selectedImpact={selectedImpact}
+      setSelectedImpact={setSelectedImpact}
+    />,
+    <CompetitiveAdvantage
+      selectedImpact={selectedImpact}
+      setSelectedImpact={setSelectedImpact}
+    />,
   ];
 
   const next = () =>
     setCurrentStep((prev) =>
-      Math.min(prev + 1, steps.length - 1, blueField.length - 1)
+      Math.min(prev + 1, steps2.length - 1, steps1.length - 1)
     );
   const prev = () => setCurrentStep((prev) => Math.max(prev - 1, 0));
 
@@ -61,14 +97,17 @@ export default function StepLayout() {
       {/* Step Navigation */}
       <div className="w-full bg-white p-2 shadow-lg">
         {/* Progress Bar */}
-        <div className="bg-gray-200 h-1 rounded mb-2">
-          <div
-            className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded h-full transition-all duration-300"
-            style={{ width: `${(currentStep / (steps.length - 1)) * 100}%` }}
-          />
+        <div className="w-full flex justify-center">
+          <div className="w-full max-w-6xl bg-gray-200 h-1 rounded mb-2">
+            <div
+              className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded h-full transition-all duration-300"
+              style={{ width: `${(currentStep / (steps2.length - 1)) * 100}%` }}
+            />
+          </div>
         </div>
+
         <div className="flex justify-between items-center">
-          {steps.map((step, index) => (
+          {steps2.map((step, index) => (
             <div
               key={index}
               className="flex flex-col items-center flex-1 text-center"
@@ -84,9 +123,7 @@ export default function StepLayout() {
               </div>
               <span
                 className={`text-xs ${
-                  index === currentStep
-                    ? "text-blue-600 font-semibold"
-                    : "text-gray-500"
+                  cc
                 }`}
               >
                 {step.label}
@@ -97,38 +134,48 @@ export default function StepLayout() {
       </div>
 
       {/* Step Content Placeholder */}
-      <div className="max-w-2xl mx-auto p-6 rounded-md mt-6">
-        <div className="bg-blue-600 mb-6 p-4 rounded-md">
-          <p>{blueField[currentStep]}</p>
-        </div>
-        <div className="border border-blue-700 rounded-md p-6">
-          {/* 👇 Render dynamic content for each step */}
-          <div className="mb-6 text-gray-700">{stepContent[currentStep]}</div>
+      <div className="mx-auto p-6 rounded-md mt-6">
+        <div className="flex flex-col items-center">
+          <div className="w-full max-w-xl mx-auto flex flex-col items-center bg-blue-600 mb-6 p-4 text-white rounded-md">
+            <div className="font-bold text-md ">
+              <FontAwesomeIcon
+                icon={steps1[currentStep].icon}
+                className="mr-2"
+              />
+              {steps1[currentStep].title}
+            </div>
+            <div className="text-xs">{steps1[currentStep].description}</div>
+          </div>
 
-          {/* Navigation Buttons */}
-          <div className="flex justify-between">
-            <button
-              onClick={prev}
-              disabled={currentStep === 0}
-              className="px-2 py-1 text-blue-700 text-xs rounded-sm border border-blue-500 disabled:opacity-50"
-            >
-              <FontAwesomeIcon
-                icon={faArrowLeft}
-                className="text-blue-500 pr-2"
-              />
-              Back
-            </button>
-            <button
-              onClick={next}
-              disabled={currentStep === steps.length - 1}
-              className="px-2 py-1 text-blue-700 text-xs rounded-sm border border-blue-500 disabled:opacity-50"
-            >
-              Next
-              <FontAwesomeIcon
-                icon={faArrowRight}
-                className="text-blue-500 pl-2"
-              />
-            </button>
+          <div className="max-w-2xl border border-blue-700 rounded-md p-6">
+            {/* 👇 Render dynamic content for each step */}
+            <div className="mb-6 text-gray-700">{stepContent[currentStep]}</div>
+
+            {/* Navigation Buttons */}
+            <div className="flex justify-between">
+              <button
+                onClick={prev}
+                disabled={currentStep === 0}
+                className="px-2 py-1 text-blue-700 text-xs rounded-sm border border-blue-500 disabled:opacity-50"
+              >
+                <FontAwesomeIcon
+                  icon={faArrowLeft}
+                  className="text-blue-500 pr-2"
+                />
+                Back
+              </button>
+              <button
+                onClick={next}
+                disabled={currentStep === steps2.length - 1}
+                className="px-2 py-1 text-blue-700 text-xs rounded-sm border border-blue-500 disabled:opacity-50"
+              >
+                Next
+                <FontAwesomeIcon
+                  icon={faArrowRight}
+                  className="text-blue-500 pl-2"
+                />
+              </button>
+            </div>
           </div>
         </div>
       </div>

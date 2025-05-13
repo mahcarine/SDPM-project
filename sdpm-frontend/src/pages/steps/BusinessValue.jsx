@@ -1,7 +1,7 @@
 import { useState } from "react";
 import RadioCardGroup from "../../components/RadioOptions";
 
-export default function StepAccount({ selectedImpact, setSelectedImpact }) {
+export default function BusinessValue({ selectedImpact, setSelectedImpact }) {
   const impactOptions = [
     {
         id: "high",

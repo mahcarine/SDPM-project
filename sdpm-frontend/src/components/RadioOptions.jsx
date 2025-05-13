@@ -38,7 +38,8 @@ export default function RadioCardGroup({
                 <div className="text-sm font-medium my-2">
                   {option.title}
                   </div>
-                <div className="text-xs text-gray-600">{option.description}</div>
+                <div className="text-[10px] text-gray-700 mb-1">{option.description1}</div>
+                <div className="text-[10px] text-gray-700">{option.description}</div>
               </div>
             </div>
           </label>
