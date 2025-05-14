@@ -22,10 +22,10 @@ const Home = () => {
         <div className="circle-bg w-[150px] h-[150px] bottom-[35%] left-[45%] opacity-80"></div>
         <div className="circle-bg w-[250px] h-[250px] bottom-[10%] left-[75%] opacity-60"></div>
 
-        <div className=" ">
+        <div className="py-4 ">
           <div>
             {/* header */}
-            <header className="py-6 justify-center flex items-center">
+            <header className=" justify-center flex items-center">
               <h1 className="text-2xl text-white">
                 
                 🎉Welcome to SDPM - Prioritize with Purpose!
@@ -33,13 +33,13 @@ const Home = () => {
             </header>
 
             {/* Hero section */}
-            <section className="py-8 flex justify-center items-center">
+            <div className="py-4 flex justify-center items-center">
               <div>
                 <h1 className="text-white text-center">
                   Fast. Fun. FREE. Let's get your priorities straight!
                 </h1>
                 <div>
-                  <h1 className="font-medium text-white text-5xl mt-22 text-center">
+                  <h1 className="font-medium text-white text-5xl mt-16 text-center">
                     🚀Spaunder Deliverable <br /> Prioritization Metrix
                   </h1>
                 </div>
@@ -67,11 +67,11 @@ const Home = () => {
                   What Will You Answer?
                 </p>
               </div>
-            </section>
+            </div>
 
             <div className="flex justify-center">
-              <div className="grid grid-cols-6 p-4">
-                <div className="grid grid-rows-2 justify-center flex items-center">
+              <div className="flex flex-row p-4">
+                <div className="flex flex-col flex-1">
                   <div className="w-4 h-4 bg-blue-700 rounded-full Shadow-xl outline outline-white flex justify-center items-center p-3">
                     <FontAwesomeIcon
                       icon={faChartLine}
