@@ -19,8 +19,8 @@ const Home = () => {
     <>
       <div className="min-h-screen bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
         <div className="circle-bg w-[170px] h-[170px] bottom-[65%] left-[5%] opacity-70"></div>
-        <div className="circle-bg w-[150px] h-[150px] bottom-[35%] left-[45%] opacity-80"></div>
-        <div className="circle-bg w-[250px] h-[250px] bottom-[10%] left-[75%] opacity-60"></div>
+        <div className="circle-bg w-[150px] h-[150px] bottom-[40%] left-[45%] opacity-75"></div>
+        <div className="circle-bg w-[230px] h-[230px] bottom-[10%] left-[78%] opacity-60"></div>
 
         <div className="py-4 ">
           <div>
@@ -50,7 +50,7 @@ const Home = () => {
                   find your business game changer!
                 </p>
                 <div className="flex justify-center">
-                  <button onClick={() => navigate("/step_layout")} className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white rounded-3xl px-5 py-2 shadow-xl">
+                  <button onClick={() => navigate("/multistepform")} className="cursor-pointer bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white rounded-3xl px-5 py-2 shadow-xl">
                     🎯 Let's Start the Assessment!{" "}
                     <FontAwesomeIcon
                       icon={faArrowRight}

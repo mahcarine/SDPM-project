@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import BusinessValue from "./steps/BusinessValue";
 import EngineeringEffort from "./steps/EngineeringEffort";
 import FinancialImpact from "./steps/FinancialImpact";
 import SecurityCompliance from "./steps/SecurityCompliance";
 import CompetitiveAdvantage from "./steps/CompetitiveAdvantage";
+import CriticalPriority from "./CriticalPriority";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight, faDollar } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -63,6 +65,7 @@ const steps2 = [
 export default function StepLayout() {
   const [currentStep, setCurrentStep] = useState(0);
   const [selectedImpact, setSelectedImpact] = useState("");
+  const navigate = useNavigate();
 
   
   const stepContent = [
@@ -183,11 +186,11 @@ export default function StepLayout() {
              </div>
            </div>
           ) : (
-            <div className="max-w-2xl border border-blue-700 rounded-md p-8">
-              <div className="w-full grid grid-rows-5 gap-4 mb-10">
-                <div className="flex justify-between items-center bg-white p-2 text-xs rounded-md shadow-2xs">
+            <div className="max-w-2xl border border-blue-700 rounded-md px-12 py-6">
+              <div className="w-full min-w-sm grid grid-rows-5 gap-3 mb-10">
+                <div className="flex justify-between items-center bg-white p-4 text-xs rounded-md shadow-2xs">
                   <div>
-                    <p>Business Value</p>
+                    <p className="mb-1">Business Value</p>
                     <p className="text-green-600">High Impact</p>
                   </div>
                   <FontAwesomeIcon
@@ -195,40 +198,40 @@ export default function StepLayout() {
                    className="text-green-500 pl-2"
                  />
                 </div>
-                <div className="flex justify-between items-center bg-white p-2 text-xs rounded-md shadow-2xs">
+                <div className="flex justify-between items-center bg-white p-4 text-xs rounded-md shadow-2xs">
                 <div>
-                    <p>Engineering Effort</p>
-                    <p className="text-orange-600">High Impact</p>
+                    <p className="mb-1">Engineering Effort</p>
+                    <p className="text-orange-600">Medium Effort</p>
                   </div>
                   <FontAwesomeIcon
                    icon={faCode}
                    className="text-orange-500 pl-2"
                  />
                 </div>
-                <div className="flex justify-between items-center bg-white p-2 text-xs rounded-md shadow-2xs">
+                <div className="flex justify-between items-center bg-white p-4 text-xs rounded-md shadow-2xs">
                 <div>
-                    <p>Financial Impact</p>
-                    <p className="text-blue-600">High Impact</p>
+                    <p className="mb-1">Financial Impact</p>
+                    <p className="text-blue-600">High Gain/Low Loss</p>
                   </div>
                   <FontAwesomeIcon
                    icon={faDollarSign}
                    className="text-blue-500 pl-2"
                  />
                 </div>
-                <div className="flex justify-between items-center bg-white p-2 text-xs rounded-md shadow-2xs">
+                <div className="flex justify-between items-center bg-white p-4 text-xs rounded-md shadow-2xs">
                 <div>
-                    <p>Security and Compliance</p>
-                    <p className="text-red-600">High Impact</p>
+                    <p className="mb-1">Security and Compliance</p>
+                    <p className="text-red-600">Critical Requirement</p>
                   </div>
                   <FontAwesomeIcon
                    icon={faShieldAlt}
                    className="text-red-500 pl-2"
                  />
                 </div>
-                <div className="flex justify-between items-center bg-white p-2 text-xs rounded-md shadow-2xs">
+                <div className="flex justify-between items-center bg-white p-4 text-xs rounded-md shadow-2xs">
                 <div>
-                    <p>Competitive Advantage</p>
-                    <p className="text-purple-600">High Impact</p>
+                    <p className="mb-1">Competitive Advantage</p>
+                    <p className="text-purple-600">Major Advantage</p>
                   </div>
                   <FontAwesomeIcon
                    icon={faTrophy}
@@ -237,17 +240,15 @@ export default function StepLayout() {
                 </div>
               </div>
               {/* Summary content goes here */}
-              <div className="flex flex-col text-sm text-gray-600">
+              <div className="w-40 flex flex-col justify-center text-sm text-gray-600">
               <button
-                 onClick={prev}
-                 disabled={currentStep === 0}
-                 className="px-2 py-1 text-white text-xs bg-blue-600 rounded-sm disabled:opacity-50"
+                 onClick={() => navigate("/criticalpriority")}
+                 className="px-2 py-1 my-2 text-white text-xs bg-blue-600 rounded-sm border border-blue-600 cursor-pointer"
                >
                  Submit Assessment
                </button>
                <button
                  onClick={prev}
-                 disabled={currentStep === 0}
                  className="px-2 py-1 my-2 text-black text-xs rounded-sm border border-blue-600 disabled:opacity-50"
                >
                  Edit Previous Steps
