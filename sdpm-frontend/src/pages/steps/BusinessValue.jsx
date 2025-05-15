@@ -1,10 +1,10 @@
 import { useState } from "react";
 import RadioCardGroup from "../../components/RadioOptions";
 
-export default function BusinessValue({ selectedImpact, setSelectedImpact }) {
+export default function BusinessValue({ data,  onChange }) {
   const impactOptions = [
     {
-        id: "high",
+        id: "1",
         icon: "🚀",
         title: "High Impact",
         description: "Significant business value",
@@ -14,7 +14,7 @@ export default function BusinessValue({ selectedImpact, setSelectedImpact }) {
         ringColor: "ring-green-100",
       },
       {
-        id: "medium",
+        id: "2",
         icon: "⚖️",
         title: "Medium Impact",
         description: "Moderate business value",
@@ -24,7 +24,7 @@ export default function BusinessValue({ selectedImpact, setSelectedImpact }) {
         ringColor: "ring-orange-100",
       },
       {
-        id: "low",
+        id: "3",
         icon: "🌿",
         title: "Low Impact",
         description: "Minimal business value",
@@ -39,9 +39,11 @@ export default function BusinessValue({ selectedImpact, setSelectedImpact }) {
     <RadioCardGroup
     label="Choose the option that best fits."
     options={impactOptions}
-    selectedValue={selectedImpact}
-    setSelectedValue={setSelectedImpact}
-    name="impact"
+    selectedValueId={data.businessValue.id}
+    // setSelectedValue={setSelectedImpact}
+    name="businessValue"
+    // onChange={selectedImpact => {onChange("businessValue", data.businessValue.value); console.log("businessValue",  data.businessValue.value)} }
+    onChange={onChange}
   />
   );
 }

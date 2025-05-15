@@ -17,16 +17,17 @@ const Home = () => {
 
   return (
     <>
-      <div className="min-h-screen bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
-        <div className="circle-bg w-[170px] h-[170px] bottom-[65%] left-[5%] opacity-70"></div>
-        <div className="circle-bg w-[150px] h-[150px] bottom-[40%] left-[45%] opacity-75"></div>
-        <div className="circle-bg w-[230px] h-[230px] bottom-[10%] left-[78%] opacity-60"></div>
+      <div className="min-h-screen bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 relative overflow-hidden">
+        {/* Floating circles */}
+        <div className="circle-bg w-[120px] h-[120px] sm:w-[170px] sm:h-[170px] bottom-[75%] sm:bottom-[65%] left-[5%] opacity-70"></div>
+        <div className="circle-bg w-[120px] h-[120px] sm:w-[170px] sm:h-[170px] bottom-[50%] sm:bottom-[40%] left-[45%] opacity-75"></div>
+        <div className="circle-bg w-[150px] h-[150px] sm:w-[230px] sm:h-[230px] bottom-[10%] left-[78%] opacity-60"></div>
 
-        <div className="py-4 ">
+        <div className="py-4  px-4 max-w-screen-xl mx-auto">
           <div>
             {/* header */}
-            <header className=" justify-center flex items-center">
-              <h1 className="text-2xl text-white">
+            <header className="flex justify-center items-center">
+              <h1 className="text-md sm:text-2xl text-white font-semibold">
                 
                 🎉Welcome to SDPM - Prioritize with Purpose!
               </h1>
@@ -39,12 +40,12 @@ const Home = () => {
                   Fast. Fun. FREE. Let's get your priorities straight!
                 </h1>
                 <div>
-                  <h1 className="font-medium text-white text-5xl mt-16 text-center">
-                    🚀Spaunder Deliverable <br /> Prioritization Metrix
+                  <h1 className="text-white font-semibold text-2xl sm:text-4xl md:text-5xl mt-10 leading-tight text-center">
+                    🚀Spaunder Deliverable <br className="hidden sm:block"  /> Prioritization Metrix
                   </h1>
                 </div>
 
-                <p className="text-white content-center my-6 text-center">
+                <p className="text-white my-6 text-center max-w-xl">
                   Let's prioritize the fun way! Rank your deliverables and{" "}
                   <br />
                   find your business game changer!
@@ -70,7 +71,7 @@ const Home = () => {
             </div>
 
             <div className="flex justify-center">
-              <div className="flex flex-row p-4">
+              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-6 p-4">
                 <div className="flex flex-col flex-1">
                   <div className="w-4 h-4 bg-blue-700 rounded-full Shadow-xl outline outline-white flex justify-center items-center p-3">
                     <FontAwesomeIcon

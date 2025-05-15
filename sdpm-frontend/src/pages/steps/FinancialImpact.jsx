@@ -1,10 +1,10 @@
 import { useState } from "react";
 import RadioCardGroup from "../../components/RadioOptions";
 
-export default function FinancialImpact({ selectedImpact, setSelectedImpact }) {
+export default function FinancialImpact({ data, onChange }) {
   const impactOptions = [
     {
-        id: "high",
+        id: "7",
         icon: "🚀",
         title: "Low gain/High loss",
         description: "Minimal level opportunity but significant risk if delayed",
@@ -14,7 +14,7 @@ export default function FinancialImpact({ selectedImpact, setSelectedImpact }) {
         ringColor: "ring-green-100",
       },
       {
-        id: "medium",
+        id: "8",
         icon: "⚖️",
         title: "Medium gain/Medium loss",
         description: "Balanced outcome with moderate gains and risks",
@@ -24,7 +24,7 @@ export default function FinancialImpact({ selectedImpact, setSelectedImpact }) {
         ringColor: "ring-orange-100",
       },
       {
-        id: "low",
+        id: "9",
         icon: "🌿",
         title: "High gain/Low loss",
         description: "Significant revenue potential with minimal risk",
@@ -39,9 +39,10 @@ export default function FinancialImpact({ selectedImpact, setSelectedImpact }) {
     <RadioCardGroup
     label="Choose the option that best describes the balance of potential gains and risks for this deliverable."
     options={impactOptions}
-    selectedValue={selectedImpact}
-    setSelectedValue={setSelectedImpact}
-    name="impact"
+    selectedValueId={data.financialImpact.id}
+    // setSelectedValue={setSelectedImpact}
+    name="financialImpact"
+    onChange={onChange}
   />
   );
 }

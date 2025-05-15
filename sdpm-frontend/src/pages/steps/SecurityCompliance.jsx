@@ -1,10 +1,10 @@
 import { useState } from "react";
 import RadioCardGroup from "../../components/RadioOptions";
 
-export default function SecurityCompliance({ selectedImpact, setSelectedImpact }) {
+export default function SecurityCompliance({ data, onChange }) {
   const impactOptions = [
     {
-        id: "high",
+        id: "10",
         icon: "🚀",
         title: "Critical Requirement",
         description: "Essential for security or regulatory compliance. Must meet strict guidelines.",
@@ -14,7 +14,7 @@ export default function SecurityCompliance({ selectedImpact, setSelectedImpact }
         ringColor: "ring-green-100",
       },
       {
-        id: "medium",
+        id: "11",
         icon: "⚖️",
         title: "Moderate Importance",
         description: "Important but flexible. Compliance is required but not urgent.",
@@ -24,7 +24,7 @@ export default function SecurityCompliance({ selectedImpact, setSelectedImpact }
         ringColor: "ring-orange-100",
       },
       {
-        id: "low",
+        id: "12",
         icon: "🌿",
         title: "Low Priority",
         description: "Security and compliance are not critical for the deliverable",
@@ -39,9 +39,10 @@ export default function SecurityCompliance({ selectedImpact, setSelectedImpact }
     <RadioCardGroup
     label="Select the level that accuately reflects the security and compliance needs of this deliverable."
     options={impactOptions}
-    selectedValue={selectedImpact}
-    setSelectedValue={setSelectedImpact}
-    name="impact"
+    selectedValueId={data.securityCompliance.id}
+    // setSelectedValue={setSelectedImpact}
+    name="securityCompliance"
+    onChange={onChange}
   />
   );
 }

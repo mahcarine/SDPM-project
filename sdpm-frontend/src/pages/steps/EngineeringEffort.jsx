@@ -1,10 +1,10 @@
 import { useState } from "react";
 import RadioCardGroup from "../../components/RadioOptions";
 
-export default function EngineeringEffort({ selectedImpact, setSelectedImpact }) {
+export default function EngineeringEffort({ data, onChange }) {
   const impactOptions = [
     {
-        id: "low",
+        id: "4",
         icon: "🚀",
         title: "Low Effort",
         description1: "<80 Hours ",
@@ -15,7 +15,7 @@ export default function EngineeringEffort({ selectedImpact, setSelectedImpact })
         ringColor: "ring-green-100",
       },
       {
-        id: "medium",
+        id: "5",
         icon: "⚖️",
         title: "Medium Effort",
         description1: "80-320 Hours ",
@@ -26,7 +26,7 @@ export default function EngineeringEffort({ selectedImpact, setSelectedImpact })
         ringColor: "ring-orange-100",
       },
       {
-        id: "high",
+        id: "6",
         icon: "🌿",
         title: "High Effort",
         description1: ">320 Hours ",
@@ -42,9 +42,11 @@ export default function EngineeringEffort({ selectedImpact, setSelectedImpact })
     <RadioCardGroup
     label="Choose the effort level that matches the deliverable."
     options={impactOptions}
-    selectedValue={selectedImpact}
-    setSelectedValue={setSelectedImpact}
-    name="effort"
+    selectedValueId={data.engineeringEffort.id}
+    // setSelectedValue={setSelectedImpact}
+    name="engineeringEffort"
+    // onChange={selectedImpact => {onChange("engineeringEffort", selectedImpact); console.log("engineeringEffort", selectedImpact)} }
+    onChange={onChange}
   />
   );
 }

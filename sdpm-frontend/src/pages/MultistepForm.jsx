@@ -66,28 +66,60 @@ export default function StepLayout() {
   const [currentStep, setCurrentStep] = useState(0);
   const [selectedImpact, setSelectedImpact] = useState("");
   const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    businessValue: {id: "", title: ""},
+    engineeringEffort:  {id: "", title: ""},
+    financialImpact:  {id: "", title: ""},
+    securityCompliance:  {id: "", title: ""},
+    competitiveAdvantage:  {id: "", title: ""},
+  });
+  const handleChange = (field, id, title) => {
+    setFormData(prev => ({
+      ...prev,
+      [field]: {id, title},
+    }));
+    console.log("formData", formData);
+    console.log("selectedImpact", selectedImpact);
+    console.log("field", field);
+    console.log("title", title); 
+    console.log("formData", formData);
+  };
+  const handleSubmit = () => {
+    // Final form data is available here
+    console.log("Submitted Data:", formData);
+  };
 
   
   const stepContent = [
     <BusinessValue
-      selectedImpact={selectedImpact}
-      setSelectedImpact={setSelectedImpact}
+      // selectedImpact={selectedImpact}
+      // setSelectedImpact={setSelectedImpact}
+      data={formData}
+      onChange={handleChange}
     />,
     <EngineeringEffort
-      selectedImpact={selectedImpact}
-      setSelectedImpact={setSelectedImpact}
+      // selectedImpact={selectedImpact}
+      // setSelectedImpact={setSelectedImpact}
+      data={formData}
+      onChange={handleChange}
     />,
     <FinancialImpact
-      selectedImpact={selectedImpact}
-      setSelectedImpact={setSelectedImpact}
+      // selectedImpact={selectedImpact}
+      // setSelectedImpact={setSelectedImpact}
+      data={formData}
+      onChange={handleChange}
     />,
     <SecurityCompliance
-      selectedImpact={selectedImpact}
-      setSelectedImpact={setSelectedImpact}
+      // selectedImpact={selectedImpact}
+      // setSelectedImpact={setSelectedImpact}
+      data={formData}
+      onChange={handleChange}
     />,
     <CompetitiveAdvantage
-      selectedImpact={selectedImpact}
-      setSelectedImpact={setSelectedImpact}
+      // selectedImpact={selectedImpact}
+      // setSelectedImpact={setSelectedImpact}
+      data={formData}
+      onChange={handleChange}
     />,
   ];
 
@@ -98,7 +130,7 @@ export default function StepLayout() {
   const prev = () => setCurrentStep((prev) => Math.max(prev - 1, 0));
 
   return (
-    <div className="min-h-screen mx-auto bg-blue-50">
+    <div className="min-h-screen mx-auto bg-blue-50 relative overflow-hidden">
       {/* Step Navigation */}
       <div className="w-full bg-white p-2 shadow-lg">
         {/* Progress Bar */}
@@ -127,7 +159,7 @@ export default function StepLayout() {
                 <FontAwesomeIcon icon={step.icon} className="text-xs" />
               </div>
               <span
-                className={`text-xs ${
+                className={`text-[10px] sm:text-xs ${
                   index === currentStep
                     ? "text-blue-500 font-bold"
                     : "text-gray-500"
@@ -151,7 +183,7 @@ export default function StepLayout() {
               />
               {steps1[currentStep].title}
             </div>
-            <div className="text-xs">{steps1[currentStep].description}</div>
+            <div className="text-xs sm:">{steps1[currentStep].description}</div>
           </div>
 
           {currentStep < steps2.length - 1 ? (
@@ -186,12 +218,12 @@ export default function StepLayout() {
              </div>
            </div>
           ) : (
-            <div className="max-w-2xl border border-blue-700 rounded-md px-12 py-6">
+            <div className="max-w-2xl sm:max-w-md border border-blue-700 rounded-md px-12 py-6">
               <div className="w-full min-w-sm grid grid-rows-5 gap-3 mb-10">
                 <div className="flex justify-between items-center bg-white p-4 text-xs rounded-md shadow-2xs">
                   <div>
                     <p className="mb-1">Business Value</p>
-                    <p className="text-green-600">High Impact</p>
+                    <p className="text-green-600">{formData.businessValue.title}</p>
                   </div>
                   <FontAwesomeIcon
                    icon={faChartLine}
@@ -201,7 +233,7 @@ export default function StepLayout() {
                 <div className="flex justify-between items-center bg-white p-4 text-xs rounded-md shadow-2xs">
                 <div>
                     <p className="mb-1">Engineering Effort</p>
-                    <p className="text-orange-600">Medium Effort</p>
+                    <p className="text-orange-600">{formData.engineeringEffort.title}</p>
                   </div>
                   <FontAwesomeIcon
                    icon={faCode}
@@ -211,7 +243,7 @@ export default function StepLayout() {
                 <div className="flex justify-between items-center bg-white p-4 text-xs rounded-md shadow-2xs">
                 <div>
                     <p className="mb-1">Financial Impact</p>
-                    <p className="text-blue-600">High Gain/Low Loss</p>
+                    <p className="text-blue-600">{formData.financialImpact.title}</p>
                   </div>
                   <FontAwesomeIcon
                    icon={faDollarSign}
@@ -221,7 +253,7 @@ export default function StepLayout() {
                 <div className="flex justify-between items-center bg-white p-4 text-xs rounded-md shadow-2xs">
                 <div>
                     <p className="mb-1">Security and Compliance</p>
-                    <p className="text-red-600">Critical Requirement</p>
+                    <p className="text-red-600">{formData.securityCompliance.title}</p>
                   </div>
                   <FontAwesomeIcon
                    icon={faShieldAlt}
@@ -231,7 +263,7 @@ export default function StepLayout() {
                 <div className="flex justify-between items-center bg-white p-4 text-xs rounded-md shadow-2xs">
                 <div>
                     <p className="mb-1">Competitive Advantage</p>
-                    <p className="text-purple-600">Major Advantage</p>
+                    <p className="text-purple-600">{formData.competitiveAdvantage.title}</p>
                   </div>
                   <FontAwesomeIcon
                    icon={faTrophy}

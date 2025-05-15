@@ -1,10 +1,10 @@
 import { useState } from "react";
 import RadioCardGroup from "../../components/RadioOptions";
 
-export default function CompetitiveAdvantage({ selectedImpact, setSelectedImpact }) {
+export default function CompetitiveAdvantage({ data, onChange }) {
   const impactOptions = [
     {
-        id: "high",
+        id: "13",
         icon: "🚀",
         title: "Major Advantage",
         description: "Puts us significantly ahead of competitors. A true market leader.",
@@ -14,7 +14,7 @@ export default function CompetitiveAdvantage({ selectedImpact, setSelectedImpact
         ringColor: "ring-green-100",
       },
       {
-        id: "medium",
+        id: "14",
         icon: "⚖️",
         title: "Moderate Advantage",
         description: "Provides a noticeable but not groundbreaking advantage.",
@@ -24,7 +24,7 @@ export default function CompetitiveAdvantage({ selectedImpact, setSelectedImpact
         ringColor: "ring-orange-100",
       },
       {
-        id: "low",
+        id: "15",
         icon: "🌿",
         title: "No Advantage",
         description: "Neutral. Doesn't significantly impact our market position.",
@@ -39,9 +39,10 @@ export default function CompetitiveAdvantage({ selectedImpact, setSelectedImpact
     <RadioCardGroup
     label="Choose how much this deliverable will help us stand out in the market."
     options={impactOptions}
-    selectedValue={selectedImpact}
-    setSelectedValue={setSelectedImpact}
-    name="impact"
+    selectedValueId={data.competitiveAdvantage.id}
+    // setSelectedValue={setSelectedImpact}
+    name="competitiveAdvantage"
+    onChange={onChange}
   />
   );
 }
